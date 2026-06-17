@@ -1,0 +1,25 @@
+services:
+  inference-api:
+    container_name: medical-specialization-inference-api
+    build:
+      context: .
+      dockerfile: inference-api/Dockerfile
+    environment:
+      BASELINE_MODEL_PATH: /app/models/specialty_baseline.json
+    ports:
+      - "8018:8000"
+
+  dashboard:
+    container_name: medical-specialization-dashboard
+    build:
+      context: .
+      dockerfile: dashboard/Dockerfile
+    environment:
+      API_URL: http://inference-api:8000
+      DATA_FILE: /app/data/students.json
+    ports:
+      - "8511:8501"
+    volumes:
+      - ./dashboard/data:/app/data
+    depends_on:
+      - inference-api

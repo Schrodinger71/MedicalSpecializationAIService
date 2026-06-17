@@ -1,0 +1,11 @@
+{
+  "model_name": "medical_specialty_baseline",
+  "source_dataset": "synthetic_med_students.csv",
+  "records_used": 5000,
+  "class_priors": {
+    "cardiology": 0.2042,
+    "neurology": 0.257,
+    "otolaryngology": 0.2712,
+    "surgery": 0.2676
+  }
+}

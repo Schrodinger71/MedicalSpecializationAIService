@@ -1,0 +1,2112 @@
+[
+  {
+    "id": "MED-001",
+    "created_at": "2026-06-01T14:00:00",
+    "student_name": "Анна Котова",
+    "course_year": 5,
+    "student_note": "Сильна в практических манипуляциях.",
+    "academic_score": 89.0,
+    "anatomy_score": 95.0,
+    "physiology_score": 81.0,
+    "surgery_interest": 10.0,
+    "cardiology_interest": 5.0,
+    "neurology_interest": 4.0,
+    "ent_interest": 3.0,
+    "manual_dexterity": 9.0,
+    "stress_tolerance": 9.0,
+    "empathy": 6.0,
+    "analytical_thinking": 7.0,
+    "communication_skill": 6.0,
+    "research_orientation": 5.0,
+    "night_shift_readiness": 10.0,
+    "cardiovascular_endurance": 8.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 9.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.63,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 9.0734,
+        "probability": 0.63
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.9345,
+        "probability": 0.1367
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.6563,
+        "probability": 0.1121
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.7658,
+        "probability": 0.1212
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.63,
+      "Кардиолог": 0.1367,
+      "Невролог": 0.1121,
+      "Отоларинголог": 0.1212
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.63
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1367
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1212
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.1121
+      }
+    ],
+    "key_factors": [
+      "Интерес к хирургии: 10.0/10",
+      "Анатомия: 95/100",
+      "Мануальная точность: 9.0/10",
+      "Готовность к дежурствам: 10.0/10",
+      "Стрессоустойчивость: 9.0/10"
+    ],
+    "summary": "Профиль студента Анна Котова ближе всего к специализации «Хирург». Уверенность модели составляет 63%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-002",
+    "created_at": "2026-06-01T19:00:00",
+    "student_name": "Дмитрий Орлов",
+    "course_year": 6,
+    "student_note": "Любит диагностику и клинический анализ.",
+    "academic_score": 92.0,
+    "anatomy_score": 84.0,
+    "physiology_score": 96.0,
+    "surgery_interest": 5.0,
+    "cardiology_interest": 10.0,
+    "neurology_interest": 6.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 7.0,
+    "stress_tolerance": 8.0,
+    "empathy": 8.0,
+    "analytical_thinking": 9.0,
+    "communication_skill": 9.0,
+    "research_orientation": 7.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 8.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "cardiology",
+    "predicted_specialty": "Кардиолог",
+    "confidence": 0.4638,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 7.4188,
+        "probability": 0.1689
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 8.833,
+        "probability": 0.4638
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 8.0263,
+        "probability": 0.2607
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.7741,
+        "probability": 0.1066
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1689,
+      "Кардиолог": 0.4638,
+      "Невролог": 0.2607,
+      "Отоларинголог": 0.1066
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.4638
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.2607
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1689
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1066
+      }
+    ],
+    "key_factors": [
+      "Интерес к кардиологии: 10.0/10",
+      "Физиология: 96/100",
+      "Аналитическое мышление: 9.0/10",
+      "Коммуникация с пациентом: 9.0/10",
+      "Эмпатия: 8.0/10"
+    ],
+    "summary": "Профиль студента Дмитрий Орлов ближе всего к специализации «Кардиолог». Уверенность модели составляет 46%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Сделать акцент на клиническом разборе ЭКГ и патофизиологии.",
+      "Углублять навыки общения с пациентами и ведения длительного наблюдения.",
+      "Развивать аналитическое мышление на диагностических сценариях."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-003",
+    "created_at": "2026-06-02T00:00:00",
+    "student_name": "Елена Смирнова",
+    "course_year": 6,
+    "student_note": "Сильна в исследовательских задачах.",
+    "academic_score": 94.0,
+    "anatomy_score": 80.0,
+    "physiology_score": 94.0,
+    "surgery_interest": 3.0,
+    "cardiology_interest": 6.0,
+    "neurology_interest": 10.0,
+    "ent_interest": 3.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 7.0,
+    "empathy": 8.0,
+    "analytical_thinking": 10.0,
+    "communication_skill": 7.0,
+    "research_orientation": 10.0,
+    "night_shift_readiness": 5.0,
+    "cardiovascular_endurance": 6.0,
+    "auditory_attention": 6.0,
+    "precision_focus": 9.0,
+    "predicted_specialty_key": "neurology",
+    "predicted_specialty": "Невролог",
+    "confidence": 0.5749,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.4198,
+        "probability": 0.0821
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 7.9124,
+        "probability": 0.2383
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 9.1453,
+        "probability": 0.5749
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.7617,
+        "probability": 0.1048
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.0821,
+      "Кардиолог": 0.2383,
+      "Невролог": 0.5749,
+      "Отоларинголог": 0.1048
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.5749
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.2383
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1048
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.0821
+      }
+    ],
+    "key_factors": [
+      "Интерес к неврологии: 10.0/10",
+      "Аналитическое мышление: 10.0/10",
+      "Исследовательская направленность: 10.0/10",
+      "Физиология: 94/100",
+      "Концентрация на деталях: 9.0/10"
+    ],
+    "summary": "Профиль студента Елена Смирнова ближе всего к специализации «Невролог». Уверенность модели составляет 57%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Расширять исследовательскую практику и работу с клиническими гипотезами.",
+      "Тренировать внимательность к симптомокомплексам и тонкой диагностике.",
+      "Углублять знания по нейрофизиологии и смежным дисциплинам."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-004",
+    "created_at": "2026-06-02T05:00:00",
+    "student_name": "Ирина Белова",
+    "course_year": 4,
+    "student_note": "Тяготеет к микроманипуляциям и ЛОР-практике.",
+    "academic_score": 86.0,
+    "anatomy_score": 87.0,
+    "physiology_score": 82.0,
+    "surgery_interest": 4.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 5.0,
+    "ent_interest": 10.0,
+    "manual_dexterity": 8.0,
+    "stress_tolerance": 7.0,
+    "empathy": 8.0,
+    "analytical_thinking": 7.0,
+    "communication_skill": 9.0,
+    "research_orientation": 5.0,
+    "night_shift_readiness": 6.0,
+    "cardiovascular_endurance": 5.0,
+    "auditory_attention": 10.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "otolaryngology",
+    "predicted_specialty": "Отоларинголог",
+    "confidence": 0.5628,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.863,
+        "probability": 0.1427
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.8113,
+        "probability": 0.1375
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.9958,
+        "probability": 0.1569
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 8.7839,
+        "probability": 0.5628
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1427,
+      "Кардиолог": 0.1375,
+      "Невролог": 0.1569,
+      "Отоларинголог": 0.5628
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.5628
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.1569
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1427
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1375
+      }
+    ],
+    "key_factors": [
+      "Интерес к отоларингологии: 10.0/10",
+      "Слуховая внимательность: 10.0/10",
+      "Коммуникация с пациентом: 9.0/10",
+      "Мануальная точность: 8.0/10",
+      "Эмпатия: 8.0/10"
+    ],
+    "summary": "Профиль студента Ирина Белова ближе всего к специализации «Отоларинголог». Уверенность модели составляет 56%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Развивать точность манипуляций и навыки микроосмотра.",
+      "Уделять внимание слуховой диагностике и коммуникации с пациентами.",
+      "Укреплять анатомическую базу в области головы и шеи."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-005",
+    "created_at": "2026-06-02T10:00:00",
+    "student_name": "Михаил Соколов",
+    "course_year": 5,
+    "student_note": "Любит динамичные клинические задачи.",
+    "academic_score": 88.0,
+    "anatomy_score": 93.0,
+    "physiology_score": 85.0,
+    "surgery_interest": 9.0,
+    "cardiology_interest": 6.0,
+    "neurology_interest": 4.0,
+    "ent_interest": 3.0,
+    "manual_dexterity": 9.0,
+    "stress_tolerance": 8.0,
+    "empathy": 5.0,
+    "analytical_thinking": 7.0,
+    "communication_skill": 6.0,
+    "research_orientation": 4.0,
+    "night_shift_readiness": 9.0,
+    "cardiovascular_endurance": 9.0,
+    "auditory_attention": 4.0,
+    "precision_focus": 9.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.5968,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 8.7443,
+        "probability": 0.5968
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 7.0015,
+        "probability": 0.1719
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.4174,
+        "probability": 0.1132
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.4762,
+        "probability": 0.1181
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.5968,
+      "Кардиолог": 0.1719,
+      "Невролог": 0.1132,
+      "Отоларинголог": 0.1181
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.5968
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1719
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1181
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.1132
+      }
+    ],
+    "key_factors": [
+      "Интерес к хирургии: 9.0/10",
+      "Анатомия: 93/100",
+      "Мануальная точность: 9.0/10",
+      "Готовность к дежурствам: 9.0/10",
+      "Концентрация на деталях: 9.0/10"
+    ],
+    "summary": "Профиль студента Михаил Соколов ближе всего к специализации «Хирург». Уверенность модели составляет 60%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-006",
+    "created_at": "2026-06-02T15:00:00",
+    "student_name": "Софья Романова",
+    "course_year": 5,
+    "student_note": "Хорошо работает с пациентскими сценариями.",
+    "academic_score": 90.0,
+    "anatomy_score": 82.0,
+    "physiology_score": 95.0,
+    "surgery_interest": 4.0,
+    "cardiology_interest": 9.0,
+    "neurology_interest": 7.0,
+    "ent_interest": 3.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 9.0,
+    "analytical_thinking": 9.0,
+    "communication_skill": 10.0,
+    "research_orientation": 7.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 8.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "cardiology",
+    "predicted_specialty": "Кардиолог",
+    "confidence": 0.4456,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 7.0927,
+        "probability": 0.1272
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 8.8479,
+        "probability": 0.4456
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 8.3289,
+        "probability": 0.3076
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 7.0073,
+        "probability": 0.1197
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1272,
+      "Кардиолог": 0.4456,
+      "Невролог": 0.3076,
+      "Отоларинголог": 0.1197
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.4456
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.3076
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1272
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1197
+      }
+    ],
+    "key_factors": [
+      "Интерес к кардиологии: 9.0/10",
+      "Физиология: 95/100",
+      "Коммуникация с пациентом: 10.0/10",
+      "Аналитическое мышление: 9.0/10",
+      "Эмпатия: 9.0/10"
+    ],
+    "summary": "Профиль студента Софья Романова ближе всего к специализации «Кардиолог». Уверенность модели составляет 45%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Сделать акцент на клиническом разборе ЭКГ и патофизиологии.",
+      "Углублять навыки общения с пациентами и ведения длительного наблюдения.",
+      "Развивать аналитическое мышление на диагностических сценариях."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-007",
+    "created_at": "2026-06-02T20:00:00",
+    "student_name": "Никита Жуков",
+    "course_year": 6,
+    "student_note": "Силен в клиническом анализе и наблюдении.",
+    "academic_score": 91.0,
+    "anatomy_score": 79.0,
+    "physiology_score": 92.0,
+    "surgery_interest": 2.0,
+    "cardiology_interest": 6.0,
+    "neurology_interest": 9.0,
+    "ent_interest": 3.0,
+    "manual_dexterity": 5.0,
+    "stress_tolerance": 7.0,
+    "empathy": 7.0,
+    "analytical_thinking": 10.0,
+    "communication_skill": 7.0,
+    "research_orientation": 9.0,
+    "night_shift_readiness": 5.0,
+    "cardiovascular_endurance": 5.0,
+    "auditory_attention": 6.0,
+    "precision_focus": 9.0,
+    "predicted_specialty_key": "neurology",
+    "predicted_specialty": "Невролог",
+    "confidence": 0.5533,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 5.987,
+        "probability": 0.0796
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 7.5948,
+        "probability": 0.2511
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 8.7011,
+        "probability": 0.5533
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.514,
+        "probability": 0.116
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.0796,
+      "Кардиолог": 0.2511,
+      "Невролог": 0.5533,
+      "Отоларинголог": 0.116
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.5533
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.2511
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.116
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.0796
+      }
+    ],
+    "key_factors": [
+      "Интерес к неврологии: 9.0/10",
+      "Аналитическое мышление: 10.0/10",
+      "Исследовательская направленность: 9.0/10",
+      "Физиология: 92/100",
+      "Концентрация на деталях: 9.0/10"
+    ],
+    "summary": "Профиль студента Никита Жуков ближе всего к специализации «Невролог». Уверенность модели составляет 55%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Расширять исследовательскую практику и работу с клиническими гипотезами.",
+      "Тренировать внимательность к симптомокомплексам и тонкой диагностике.",
+      "Углублять знания по нейрофизиологии и смежным дисциплинам."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-008",
+    "created_at": "2026-06-03T01:00:00",
+    "student_name": "Мария Тихонова",
+    "course_year": 4,
+    "student_note": "Хороший контакт с пациентом и точность движений.",
+    "academic_score": 84.0,
+    "anatomy_score": 85.0,
+    "physiology_score": 80.0,
+    "surgery_interest": 3.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 5.0,
+    "ent_interest": 9.0,
+    "manual_dexterity": 8.0,
+    "stress_tolerance": 6.0,
+    "empathy": 9.0,
+    "analytical_thinking": 7.0,
+    "communication_skill": 9.0,
+    "research_orientation": 4.0,
+    "night_shift_readiness": 5.0,
+    "cardiovascular_endurance": 5.0,
+    "auditory_attention": 9.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "otolaryngology",
+    "predicted_specialty": "Отоларинголог",
+    "confidence": 0.5438,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.4328,
+        "probability": 0.1268
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.7289,
+        "probability": 0.1567
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.8653,
+        "probability": 0.1727
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 8.471,
+        "probability": 0.5438
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1268,
+      "Кардиолог": 0.1567,
+      "Невролог": 0.1727,
+      "Отоларинголог": 0.5438
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.5438
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.1727
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1567
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1268
+      }
+    ],
+    "key_factors": [
+      "Интерес к отоларингологии: 9.0/10",
+      "Слуховая внимательность: 9.0/10",
+      "Коммуникация с пациентом: 9.0/10",
+      "Эмпатия: 9.0/10",
+      "Мануальная точность: 8.0/10"
+    ],
+    "summary": "Профиль студента Мария Тихонова ближе всего к специализации «Отоларинголог». Уверенность модели составляет 54%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Развивать точность манипуляций и навыки микроосмотра.",
+      "Уделять внимание слуховой диагностике и коммуникации с пациентами.",
+      "Укреплять анатомическую базу в области головы и шеи."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-009",
+    "created_at": "2026-06-03T06:00:00",
+    "student_name": "Павел Громов",
+    "course_year": 5,
+    "student_note": "Предпочитает практические клинические действия.",
+    "academic_score": 87.0,
+    "anatomy_score": 92.0,
+    "physiology_score": 83.0,
+    "surgery_interest": 9.0,
+    "cardiology_interest": 5.0,
+    "neurology_interest": 4.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 10.0,
+    "stress_tolerance": 9.0,
+    "empathy": 5.0,
+    "analytical_thinking": 7.0,
+    "communication_skill": 5.0,
+    "research_orientation": 4.0,
+    "night_shift_readiness": 9.0,
+    "cardiovascular_endurance": 8.0,
+    "auditory_attention": 4.0,
+    "precision_focus": 10.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.6525,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 8.951,
+        "probability": 0.6525
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.6747,
+        "probability": 0.1284
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.4742,
+        "probability": 0.1112
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.4316,
+        "probability": 0.1079
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.6525,
+      "Кардиолог": 0.1284,
+      "Невролог": 0.1112,
+      "Отоларинголог": 0.1079
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.6525
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1284
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.1112
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1079
+      }
+    ],
+    "key_factors": [
+      "Интерес к хирургии: 9.0/10",
+      "Мануальная точность: 10.0/10",
+      "Анатомия: 92/100",
+      "Концентрация на деталях: 10.0/10",
+      "Стрессоустойчивость: 9.0/10"
+    ],
+    "summary": "Профиль студента Павел Громов ближе всего к специализации «Хирург». Уверенность модели составляет 65%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-010",
+    "created_at": "2026-06-03T11:00:00",
+    "student_name": "Алина Назарова",
+    "course_year": 6,
+    "student_note": "Устойчива к длительным диагностическим задачам.",
+    "academic_score": 93.0,
+    "anatomy_score": 81.0,
+    "physiology_score": 97.0,
+    "surgery_interest": 4.0,
+    "cardiology_interest": 10.0,
+    "neurology_interest": 7.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 8.0,
+    "analytical_thinking": 9.0,
+    "communication_skill": 9.0,
+    "research_orientation": 8.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 8.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "cardiology",
+    "predicted_specialty": "Кардиолог",
+    "confidence": 0.4672,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 7.0786,
+        "probability": 0.1265
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 8.9077,
+        "probability": 0.4672
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 8.3468,
+        "probability": 0.313
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.6518,
+        "probability": 0.0933
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1265,
+      "Кардиолог": 0.4672,
+      "Невролог": 0.313,
+      "Отоларинголог": 0.0933
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.4672
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.313
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1265
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.0933
+      }
+    ],
+    "key_factors": [
+      "Интерес к кардиологии: 10.0/10",
+      "Физиология: 97/100",
+      "Аналитическое мышление: 9.0/10",
+      "Коммуникация с пациентом: 9.0/10",
+      "Эмпатия: 8.0/10"
+    ],
+    "summary": "Профиль студента Алина Назарова ближе всего к специализации «Кардиолог». Уверенность модели составляет 47%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Сделать акцент на клиническом разборе ЭКГ и патофизиологии.",
+      "Углублять навыки общения с пациентами и ведения длительного наблюдения.",
+      "Развивать аналитическое мышление на диагностических сценариях."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-011",
+    "created_at": "2026-06-03T16:00:00",
+    "student_name": "Виктор Лебедев",
+    "course_year": 5,
+    "student_note": "Тяготеет к сложным интеллектуальным кейсам.",
+    "academic_score": 90.0,
+    "anatomy_score": 78.0,
+    "physiology_score": 90.0,
+    "surgery_interest": 3.0,
+    "cardiology_interest": 5.0,
+    "neurology_interest": 10.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 5.0,
+    "stress_tolerance": 7.0,
+    "empathy": 8.0,
+    "analytical_thinking": 10.0,
+    "communication_skill": 6.0,
+    "research_orientation": 9.0,
+    "night_shift_readiness": 4.0,
+    "cardiovascular_endurance": 5.0,
+    "auditory_attention": 6.0,
+    "precision_focus": 9.0,
+    "predicted_specialty_key": "neurology",
+    "predicted_specialty": "Невролог",
+    "confidence": 0.6107,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 5.9646,
+        "probability": 0.0776
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 7.3763,
+        "probability": 0.2128
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 8.8526,
+        "probability": 0.6107
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.3036,
+        "probability": 0.0989
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.0776,
+      "Кардиолог": 0.2128,
+      "Невролог": 0.6107,
+      "Отоларинголог": 0.0989
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.6107
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.2128
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.0989
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.0776
+      }
+    ],
+    "key_factors": [
+      "Интерес к неврологии: 10.0/10",
+      "Аналитическое мышление: 10.0/10",
+      "Исследовательская направленность: 9.0/10",
+      "Физиология: 90/100",
+      "Концентрация на деталях: 9.0/10"
+    ],
+    "summary": "Профиль студента Виктор Лебедев ближе всего к специализации «Невролог». Уверенность модели составляет 61%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Расширять исследовательскую практику и работу с клиническими гипотезами.",
+      "Тренировать внимательность к симптомокомплексам и тонкой диагностике.",
+      "Углублять знания по нейрофизиологии и смежным дисциплинам."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-012",
+    "created_at": "2026-06-03T21:00:00",
+    "student_name": "Ольга Демина",
+    "course_year": 3,
+    "student_note": "Рано определилась с ЛОР-направлением.",
+    "academic_score": 83.0,
+    "anatomy_score": 84.0,
+    "physiology_score": 78.0,
+    "surgery_interest": 4.0,
+    "cardiology_interest": 3.0,
+    "neurology_interest": 4.0,
+    "ent_interest": 9.0,
+    "manual_dexterity": 7.0,
+    "stress_tolerance": 6.0,
+    "empathy": 9.0,
+    "analytical_thinking": 6.0,
+    "communication_skill": 9.0,
+    "research_orientation": 4.0,
+    "night_shift_readiness": 5.0,
+    "cardiovascular_endurance": 4.0,
+    "auditory_attention": 10.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "otolaryngology",
+    "predicted_specialty": "Отоларинголог",
+    "confidence": 0.5992,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.3219,
+        "probability": 0.1289
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.2887,
+        "probability": 0.1259
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.4958,
+        "probability": 0.146
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 8.4731,
+        "probability": 0.5992
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1289,
+      "Кардиолог": 0.1259,
+      "Невролог": 0.146,
+      "Отоларинголог": 0.5992
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.5992
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.146
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1289
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1259
+      }
+    ],
+    "key_factors": [
+      "Интерес к отоларингологии: 9.0/10",
+      "Слуховая внимательность: 10.0/10",
+      "Коммуникация с пациентом: 9.0/10",
+      "Эмпатия: 9.0/10",
+      "Концентрация на деталях: 8.0/10"
+    ],
+    "summary": "Профиль студента Ольга Демина ближе всего к специализации «Отоларинголог». Уверенность модели составляет 60%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Развивать точность манипуляций и навыки микроосмотра.",
+      "Уделять внимание слуховой диагностике и коммуникации с пациентами.",
+      "Укреплять анатомическую базу в области головы и шеи."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-013",
+    "created_at": "2026-06-04T02:00:00",
+    "student_name": "Георгий Савельев",
+    "course_year": 6,
+    "student_note": "Готов к интенсивной хирургической нагрузке.",
+    "academic_score": 86.0,
+    "anatomy_score": 94.0,
+    "physiology_score": 82.0,
+    "surgery_interest": 10.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 4.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 9.0,
+    "stress_tolerance": 9.0,
+    "empathy": 5.0,
+    "analytical_thinking": 6.0,
+    "communication_skill": 5.0,
+    "research_orientation": 3.0,
+    "night_shift_readiness": 10.0,
+    "cardiovascular_endurance": 9.0,
+    "auditory_attention": 4.0,
+    "precision_focus": 9.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.7196,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 9.1094,
+        "probability": 0.7196
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.4247,
+        "probability": 0.1058
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.08,
+        "probability": 0.0827
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.229,
+        "probability": 0.092
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.7196,
+      "Кардиолог": 0.1058,
+      "Невролог": 0.0827,
+      "Отоларинголог": 0.092
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.7196
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1058
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.092
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.0827
+      }
+    ],
+    "key_factors": [
+      "Интерес к хирургии: 10.0/10",
+      "Анатомия: 94/100",
+      "Мануальная точность: 9.0/10",
+      "Готовность к дежурствам: 10.0/10",
+      "Стрессоустойчивость: 9.0/10"
+    ],
+    "summary": "Профиль студента Георгий Савельев ближе всего к специализации «Хирург». Уверенность модели составляет 72%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-014",
+    "created_at": "2026-06-04T07:00:00",
+    "student_name": "Татьяна Максимова",
+    "course_year": 5,
+    "student_note": "Сильна и в аналитике, и в клиническом диалоге.",
+    "academic_score": 91.0,
+    "anatomy_score": 82.0,
+    "physiology_score": 93.0,
+    "surgery_interest": 4.0,
+    "cardiology_interest": 8.0,
+    "neurology_interest": 8.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 9.0,
+    "analytical_thinking": 9.0,
+    "communication_skill": 9.0,
+    "research_orientation": 8.0,
+    "night_shift_readiness": 6.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "neurology",
+    "predicted_specialty": "Невролог",
+    "confidence": 0.3932,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.8604,
+        "probability": 0.1185
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 8.4964,
+        "probability": 0.3812
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 8.5395,
+        "probability": 0.3932
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.7187,
+        "probability": 0.1071
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.1185,
+      "Кардиолог": 0.3812,
+      "Невролог": 0.3932,
+      "Отоларинголог": 0.1071
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.3932
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.3812
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.1185
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1071
+      }
+    ],
+    "key_factors": [
+      "Интерес к неврологии: 8.0/10",
+      "Аналитическое мышление: 9.0/10",
+      "Физиология: 93/100",
+      "Исследовательская направленность: 8.0/10",
+      "Эмпатия: 9.0/10"
+    ],
+    "summary": "Профиль студента Татьяна Максимова ближе всего к специализации «Невролог». Уверенность модели составляет 39%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Расширять исследовательскую практику и работу с клиническими гипотезами.",
+      "Тренировать внимательность к симптомокомплексам и тонкой диагностике.",
+      "Углублять знания по нейрофизиологии и смежным дисциплинам."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-015",
+    "created_at": "2026-06-04T12:00:00",
+    "student_name": "Кирилл Федоров",
+    "course_year": 4,
+    "student_note": "Хорошо справляется с тонкими манипуляциями.",
+    "academic_score": 85.0,
+    "anatomy_score": 88.0,
+    "physiology_score": 83.0,
+    "surgery_interest": 5.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 5.0,
+    "ent_interest": 8.0,
+    "manual_dexterity": 8.0,
+    "stress_tolerance": 7.0,
+    "empathy": 7.0,
+    "analytical_thinking": 7.0,
+    "communication_skill": 8.0,
+    "research_orientation": 4.0,
+    "night_shift_readiness": 6.0,
+    "cardiovascular_endurance": 6.0,
+    "auditory_attention": 9.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "otolaryngology",
+    "predicted_specialty": "Отоларинголог",
+    "confidence": 0.4535,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 7.0896,
+        "probability": 0.2196
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.6479,
+        "probability": 0.1601
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.7047,
+        "probability": 0.1668
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 8.1052,
+        "probability": 0.4535
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.2196,
+      "Кардиолог": 0.1601,
+      "Невролог": 0.1668,
+      "Отоларинголог": 0.4535
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.4535
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.2196
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.1668
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1601
+      }
+    ],
+    "key_factors": [
+      "Интерес к отоларингологии: 8.0/10",
+      "Слуховая внимательность: 9.0/10",
+      "Мануальная точность: 8.0/10",
+      "Коммуникация с пациентом: 8.0/10",
+      "Концентрация на деталях: 8.0/10"
+    ],
+    "summary": "Профиль студента Кирилл Федоров ближе всего к специализации «Отоларинголог». Уверенность модели составляет 45%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Развивать точность манипуляций и навыки микроосмотра.",
+      "Уделять внимание слуховой диагностике и коммуникации с пациентами.",
+      "Укреплять анатомическую базу в области головы и шеи."
+    ],
+    "input_count": 19,
+    "domain": "Лечение"
+  },
+  {
+    "id": "MED-800EF6",
+    "created_at": "2026-06-17T14:23:54",
+    "student_name": "Екатерина Новикова",
+    "course_year": 3,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 85.0,
+    "anatomy_score": 60.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 4.0,
+    "cardiology_interest": 2.0,
+    "neurology_interest": 7.0,
+    "ent_interest": 2.0,
+    "manual_dexterity": 4.0,
+    "stress_tolerance": 8.0,
+    "empathy": 4.0,
+    "analytical_thinking": 4.0,
+    "communication_skill": 8.0,
+    "research_orientation": 7.0,
+    "night_shift_readiness": 2.0,
+    "cardiovascular_endurance": 9.0,
+    "auditory_attention": 8.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "neurology",
+    "predicted_specialty": "Невролог",
+    "confidence": 0.39,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 5.8854,
+        "probability": 0.2007
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.2134,
+        "probability": 0.2061
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 6.7726,
+        "probability": 0.39
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.0409,
+        "probability": 0.2032
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.2007,
+      "Кардиолог": 0.2061,
+      "Невролог": 0.39,
+      "Отоларинголог": 0.2032
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.39
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.2061
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.2032
+      },
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.2007
+      }
+    ],
+    "key_factors": [
+      "Интерес к неврологии: 7.0/10",
+      "Физиология: 86/100",
+      "Исследовательская направленность: 7.0/10",
+      "Концентрация на деталях: 8.0/10",
+      "Средний академический балл: 85/100"
+    ],
+    "summary": "Профиль студента Екатерина Новикова ближе всего к специализации «Невролог». Уверенность модели составляет 39%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Расширять исследовательскую практику и работу с клиническими гипотезами.",
+      "Тренировать внимательность к симптомокомплексам и тонкой диагностике.",
+      "Углублять знания по нейрофизиологии и смежным дисциплинам."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "model_loaded": true,
+    "model_source": "specialty_baseline.json",
+    "model_role": "weighted_profile_assessor",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Расширять исследовательскую практику и работу с клиническими гипотезами.",
+      "Тренировать внимательность к симптомокомплексам и тонкой диагностике.",
+      "Углублять знания по нейрофизиологии и смежным дисциплинам."
+    ],
+    "prediction_source": "api"
+  },
+  {
+    "id": "MED-01D292",
+    "created_at": "2026-06-17T14:39:19",
+    "student_name": "Екатерина Новикова 2",
+    "course_year": 5,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 88.0,
+    "anatomy_score": 90.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 8.0,
+    "cardiology_interest": 6.0,
+    "neurology_interest": 5.0,
+    "ent_interest": 4.0,
+    "manual_dexterity": 8.0,
+    "stress_tolerance": 8.0,
+    "empathy": 7.0,
+    "analytical_thinking": 8.0,
+    "communication_skill": 7.0,
+    "research_orientation": 6.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.3887,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 7.9229,
+        "probability": 0.3887
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 7.367,
+        "probability": 0.2123
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 7.1663,
+        "probability": 0.2334
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.8663,
+        "probability": 0.1656
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.3887,
+      "Кардиолог": 0.2123,
+      "Невролог": 0.2334,
+      "Отоларинголог": 0.1656
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.3887
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.2334
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.2123
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1656
+      }
+    ],
+    "key_factors": [
+      "Анатомия: 90/100",
+      "Интерес к хирургии: 8.0/10",
+      "Мануальная точность: 8.0/10",
+      "Стрессоустойчивость: 8.0/10",
+      "Концентрация на деталях: 8.0/10"
+    ],
+    "summary": "Профиль студента Екатерина Новикова 2 ближе всего к специализации «Хирург». Уверенность модели составляет 39%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "model_loaded": true,
+    "model_source": "specialty_baseline.json",
+    "model_role": "weighted_profile_assessor",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "prediction_source": "api"
+  },
+  {
+    "id": "MED-3BC75F",
+    "created_at": "2026-06-17T14:56:24",
+    "student_name": "Екатерина Новикова 3",
+    "course_year": 5,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 88.0,
+    "anatomy_score": 90.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 6.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 6.0,
+    "ent_interest": 4.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 3.0,
+    "analytical_thinking": 5.0,
+    "communication_skill": 5.0,
+    "research_orientation": 6.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 3.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.4167,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.725,
+        "probability": 0.4167
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.0062,
+        "probability": 0.1903
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 5.8295,
+        "probability": 0.2111
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 5.5451,
+        "probability": 0.1818
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.4167,
+      "Кардиолог": 0.1903,
+      "Невролог": 0.2111,
+      "Отоларинголог": 0.1818
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.4167
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.2111
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1903
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1818
+      }
+    ],
+    "key_factors": [
+      "Анатомия: 90/100",
+      "Интерес к хирургии: 6.0/10",
+      "Стрессоустойчивость: 8.0/10",
+      "Мануальная точность: 6.0/10",
+      "Готовность к дежурствам: 7.0/10"
+    ],
+    "summary": "Профиль студента Екатерина Новикова 3 ближе всего к специализации «Хирург». Уверенность модели составляет 42%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "trace_id": "trace-dd90412c5c",
+    "model_loaded": true,
+    "model_source": "specialty_baseline.json",
+    "model_role": "weighted_profile_assessor",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "prediction_source": "api"
+  },
+  {
+    "id": "MED-652906",
+    "created_at": "2026-06-17T14:57:51",
+    "student_name": "Екатерина Новикова 4",
+    "course_year": 5,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 88.0,
+    "anatomy_score": 90.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 6.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 6.0,
+    "ent_interest": 4.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 3.0,
+    "analytical_thinking": 5.0,
+    "communication_skill": 5.0,
+    "research_orientation": 6.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 3.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.4167,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.725,
+        "probability": 0.4167
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.0062,
+        "probability": 0.1903
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 5.8295,
+        "probability": 0.2111
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 5.5451,
+        "probability": 0.1818
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.4167,
+      "Кардиолог": 0.1903,
+      "Невролог": 0.2111,
+      "Отоларинголог": 0.1818
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.4167
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.2111
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.1903
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.1818
+      }
+    ],
+    "key_factors": [
+      "Анатомия: 90/100",
+      "Интерес к хирургии: 6.0/10",
+      "Стрессоустойчивость: 8.0/10",
+      "Мануальная точность: 6.0/10",
+      "Готовность к дежурствам: 7.0/10"
+    ],
+    "summary": "Профиль студента Екатерина Новикова 4 ближе всего к специализации «Хирург». Уверенность модели составляет 42%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "trace_id": "trace-d134a697ba",
+    "model_loaded": true,
+    "model_source": "specialty_baseline.json",
+    "model_role": "weighted_profile_assessor",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "prediction_source": "api"
+  },
+  {
+    "id": "MED-6A41B3",
+    "created_at": "2026-06-17T14:57:56",
+    "student_name": "Екатерина Новикова 4",
+    "course_year": 5,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 88.0,
+    "anatomy_score": 90.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 2.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 6.0,
+    "ent_interest": 4.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 3.0,
+    "analytical_thinking": 5.0,
+    "communication_skill": 5.0,
+    "research_orientation": 6.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 3.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.3106,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.0792,
+        "probability": 0.3106
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.0062,
+        "probability": 0.225
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 5.8295,
+        "probability": 0.2495
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 5.5451,
+        "probability": 0.2149
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.3106,
+      "Кардиолог": 0.225,
+      "Невролог": 0.2495,
+      "Отоларинголог": 0.2149
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.3106
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.2495
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.225
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.2149
+      }
+    ],
+    "key_factors": [
+      "Анатомия: 90/100",
+      "Стрессоустойчивость: 8.0/10",
+      "Мануальная точность: 6.0/10",
+      "Готовность к дежурствам: 7.0/10",
+      "Выносливость: 7.0/10"
+    ],
+    "summary": "Профиль студента Екатерина Новикова 4 ближе всего к специализации «Хирург». Уверенность модели составляет 31%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "trace_id": "trace-b33100b44e",
+    "model_loaded": true,
+    "model_source": "specialty_baseline.json",
+    "model_role": "weighted_profile_assessor",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "prediction_source": "api"
+  },
+  {
+    "id": "MED-C76D61",
+    "created_at": "2026-06-17T14:59:04",
+    "student_name": "Екатерина Новикова 5",
+    "course_year": 5,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 88.0,
+    "anatomy_score": 90.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 2.0,
+    "cardiology_interest": 4.0,
+    "neurology_interest": 6.0,
+    "ent_interest": 4.0,
+    "manual_dexterity": 6.0,
+    "stress_tolerance": 8.0,
+    "empathy": 3.0,
+    "analytical_thinking": 5.0,
+    "communication_skill": 5.0,
+    "research_orientation": 6.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 3.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.3106,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 6.0792,
+        "probability": 0.3106
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 6.0062,
+        "probability": 0.225
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 5.8295,
+        "probability": 0.2495
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 5.5451,
+        "probability": 0.2149
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.3106,
+      "Кардиолог": 0.225,
+      "Невролог": 0.2495,
+      "Отоларинголог": 0.2149
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.3106
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.2495
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.225
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.2149
+      }
+    ],
+    "key_factors": [
+      "Анатомия: 90/100",
+      "Стрессоустойчивость: 8.0/10",
+      "Мануальная точность: 6.0/10",
+      "Готовность к дежурствам: 7.0/10",
+      "Выносливость: 7.0/10"
+    ],
+    "summary": "Профиль студента Екатерина Новикова 5 ближе всего к специализации «Хирург». Уверенность модели составляет 31%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "trace_id": "trace-b81ac9f7f8",
+    "model_loaded": true,
+    "model_source": "specialty_baseline.json",
+    "model_role": "weighted_profile_assessor",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "prediction_source": "api"
+  }
+]
