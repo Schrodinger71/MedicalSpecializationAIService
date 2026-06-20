@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 from math import exp
+from typing import Mapping
+
+import numpy as np
 
 SPECIALTIES = {
     "surgery": "Хирург",
@@ -9,6 +12,32 @@ SPECIALTIES = {
     "neurology": "Невролог",
     "otolaryngology": "Отоларинголог",
 }
+
+SPECIALTY_KEYS = list(SPECIALTIES.keys())
+SPECIALTY_NAMES = [SPECIALTIES[key] for key in SPECIALTY_KEYS]
+SPECIALTY_INDEX = {key: index for index, key in enumerate(SPECIALTY_KEYS)}
+
+FEATURE_FIELDS = [
+    "course_year",
+    "academic_score",
+    "anatomy_score",
+    "physiology_score",
+    "surgery_interest",
+    "cardiology_interest",
+    "neurology_interest",
+    "ent_interest",
+    "manual_dexterity",
+    "stress_tolerance",
+    "empathy",
+    "analytical_thinking",
+    "communication_skill",
+    "research_orientation",
+    "night_shift_readiness",
+    "cardiovascular_endurance",
+    "auditory_attention",
+    "precision_focus",
+]
+FEATURE_INPUT_DIM = len(FEATURE_FIELDS)
 
 SPECIALTY_COLORS = {
     "surgery": "#b4492e",
@@ -187,6 +216,12 @@ def scoring_vector(profile: dict) -> dict[str, float]:
     }
 
 
+def feature_vector(profile: Mapping) -> np.ndarray:
+    normalized = normalize_profile(dict(profile))
+    prepared = scoring_vector(normalized)
+    return np.array([prepared[field] / 10.0 for field in FEATURE_FIELDS], dtype=np.float32)
+
+
 def specialty_scores(profile: dict) -> dict[str, float]:
     prepared = scoring_vector(profile)
     scores: dict[str, float] = {}
@@ -216,6 +251,32 @@ def probability_distribution(scores: dict[str, float], priors: dict[str, float] 
 
     total = sum(raw.values()) or 1.0
     return {key: round(value / total, 4) for key, value in raw.items()}
+
+
+def heuristic_distribution(profile: dict, priors: dict[str, float] | None = None) -> np.ndarray:
+    normalized = normalize_profile(profile)
+    scores = specialty_scores(normalized)
+    probabilities = probability_distribution(scores, priors=priors)
+    return np.array([probabilities[key] for key in SPECIALTY_KEYS], dtype=np.float32)
+
+
+def named_distribution(values: np.ndarray) -> dict[str, float]:
+    return {
+        SPECIALTIES[SPECIALTY_KEYS[index]]: float(round(values[index], 4))
+        for index in range(min(len(values), len(SPECIALTY_KEYS)))
+    }
+
+
+def score_breakdown_from_distribution(scores: dict[str, float], distribution: np.ndarray) -> list[dict]:
+    return [
+        {
+            "specialty_key": key,
+            "specialty_name": SPECIALTIES[key],
+            "score": scores[key],
+            "probability": float(round(distribution[SPECIALTY_INDEX[key]], 4)),
+        }
+        for key in SPECIALTY_KEYS
+    ]
 
 
 def top_specialties(probabilities: dict[str, float]) -> list[dict]:

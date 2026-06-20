@@ -26,6 +26,13 @@ from medical_methodology import (  # noqa: E402
 API_URL = os.getenv("API_URL", "http://localhost:8018")
 DATA_FILE = Path(os.getenv("DATA_FILE", "data/students.json"))
 
+SPECIALTY_ICONS = {
+    "surgery": "🔪",
+    "cardiology": "❤️",
+    "neurology": "🧠",
+    "otolaryngology": "👂",
+}
+
 
 def ensure_data_file() -> None:
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -87,6 +94,7 @@ def predict_student(payload: dict) -> tuple[dict, str]:
     local = predict_specialty(payload)
     local["normalized_profile"] = payload
     local["model_loaded"] = False
+    local["model_usable"] = False
     local["model_source"] = "dashboard_local_fallback"
     local["model_role"] = "local_fallback"
     local["available_specialties"] = list(SPECIALTIES.values())
@@ -101,6 +109,7 @@ def students_frame(items: list[dict]) -> pd.DataFrame:
                 "student_name",
                 "course_year",
                 "predicted_specialty",
+                "predicted_specialty_key",
                 "confidence",
                 "created_at",
             ]
@@ -183,220 +192,369 @@ def install_styles() -> None:
         """
         <style>
         :root {
-            --paper: #f8f1e8;
-            --paper-strong: #fff9f3;
-            --ink: #2d241d;
-            --muted: #726154;
-            --accent: #b95638;
-            --accent-dark: #8e4028;
-            --forest: #3e5d48;
-            --card-border: rgba(116, 88, 66, 0.16);
-            --shadow: 0 18px 50px rgba(81, 51, 34, 0.10);
+            --bg-deep: #0b2230;
+            --bg-soft: #f4f9f8;
+            --surface: #ffffff;
+            --ink: #102a2f;
+            --muted: #5d7a7a;
+            --primary: #0e9a8a;
+            --primary-dark: #097564;
+            --primary-soft: rgba(14, 154, 138, 0.12);
+            --accent: #2f6fed;
+            --accent-soft: rgba(47, 111, 237, 0.12);
+            --warn: #e0793a;
+            --border: rgba(16, 42, 47, 0.10);
+            --shadow-sm: 0 6px 18px rgba(11, 34, 48, 0.06);
+            --shadow-md: 0 18px 44px rgba(11, 34, 48, 0.10);
+        }
+        html, body, [class*="css"] {
+            font-family: "Inter", "Segoe UI", "Trebuchet MS", sans-serif;
         }
         .stApp {
             background:
-                radial-gradient(circle at top left, rgba(185, 86, 56, 0.14), transparent 28%),
-                radial-gradient(circle at top right, rgba(62, 93, 72, 0.12), transparent 26%),
-                linear-gradient(180deg, #f4ebdf 0%, #efe3d3 100%);
+                radial-gradient(circle at 8% 0%, rgba(14, 154, 138, 0.10), transparent 38%),
+                radial-gradient(circle at 92% 6%, rgba(47, 111, 237, 0.10), transparent 32%),
+                linear-gradient(180deg, var(--bg-soft) 0%, #eef5f4 100%);
             color: var(--ink);
-            font-family: "Trebuchet MS", "Georgia", serif;
         }
         .block-container {
-            max-width: 1480px;
-            padding-top: 1.4rem;
-            padding-bottom: 2rem;
+            max-width: 1500px;
+            padding-top: 1.3rem;
+            padding-bottom: 2.4rem;
         }
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(14px); }
+            from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .hero-panel,
-        .clinic-card,
-        div[data-testid="stMetric"] {
-            animation: fadeUp 0.55s ease-out both;
+        @keyframes shimmer {
+            0% { background-position: -120% 0; }
+            100% { background-position: 120% 0; }
+        }
+        .hero-panel, .panel-card, div[data-testid="stMetric"] {
+            animation: fadeUp 0.5s ease-out both;
         }
         .hero-panel {
-            padding: 28px 30px;
+            position: relative;
+            overflow: hidden;
+            padding: 32px 34px;
             border-radius: 28px;
-            border: 1px solid rgba(93, 63, 45, 0.12);
-            background:
-                linear-gradient(135deg, rgba(255, 249, 243, 0.96), rgba(249, 238, 224, 0.96)),
-                repeating-linear-gradient(
-                    135deg,
-                    rgba(185, 86, 56, 0.03) 0,
-                    rgba(185, 86, 56, 0.03) 12px,
-                    rgba(255, 255, 255, 0.00) 12px,
-                    rgba(255, 255, 255, 0.00) 26px
-                );
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
+            background: linear-gradient(125deg, #0b2230 0%, #0e3a45 45%, #0e6f63 100%);
+            color: #f3fbfa;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 22px;
         }
-        .hero-eyebrow {
-            color: var(--accent);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            font-weight: 800;
-            margin-bottom: 10px;
+        .hero-panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 85% -10%, rgba(255, 255, 255, 0.14), transparent 40%),
+                radial-gradient(circle at -5% 110%, rgba(255, 255, 255, 0.08), transparent 40%);
+            pointer-events: none;
         }
         .hero-grid {
+            position: relative;
             display: grid;
-            grid-template-columns: 1.4fr 0.95fr;
-            gap: 22px;
-            align-items: start;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 26px;
+            align-items: center;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #8fe9d8;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            font-weight: 800;
+            margin-bottom: 14px;
         }
         .hero-panel h1 {
-            margin: 0 0 12px 0;
-            font-size: 2.15rem;
-            line-height: 1.08;
-            color: #382920;
+            margin: 0 0 14px 0;
+            font-size: 2.25rem;
+            line-height: 1.12;
+            font-weight: 800;
+            color: #ffffff;
         }
         .hero-panel p {
             margin: 0;
-            color: #5c4d42;
-            font-size: 1rem;
+            color: #d7ece8;
+            font-size: 1.02rem;
+            line-height: 1.55;
+            max-width: 640px;
+        }
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 18px;
+        }
+        .hero-pill {
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #eafff9;
         }
         .hero-side {
+            position: relative;
             display: grid;
             gap: 12px;
         }
-        .side-note {
-            padding: 14px 16px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.72);
-            border: 1px solid var(--card-border);
-            color: #48382d;
-        }
-        .status-ok,
-        .status-warn {
-            padding: 12px 14px;
+        .status-chip {
+            padding: 13px 16px;
             border-radius: 16px;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            backdrop-filter: blur(6px);
         }
-        .status-ok {
-            background: rgba(62, 93, 72, 0.12);
-            color: #244232;
-            border: 1px solid rgba(62, 93, 72, 0.22);
+        .status-chip.ok {
+            background: rgba(45, 211, 158, 0.16);
+            border: 1px solid rgba(45, 211, 158, 0.40);
+            color: #c8ffe9;
         }
-        .status-warn {
-            background: rgba(185, 86, 56, 0.12);
-            color: #7a341f;
-            border: 1px solid rgba(185, 86, 56, 0.22);
+        .status-chip.fail {
+            background: rgba(255, 145, 110, 0.16);
+            border: 1px solid rgba(255, 145, 110, 0.40);
+            color: #ffe0d2;
+        }
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .dot.ok { background: #2dd39e; box-shadow: 0 0 0 4px rgba(45, 211, 158, 0.25); }
+        .dot.fail { background: #ff916e; box-shadow: 0 0 0 4px rgba(255, 145, 110, 0.25); }
+        .hero-note {
+            padding: 13px 16px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #eafff9;
+            font-size: 0.88rem;
+            line-height: 1.4;
         }
         section[data-testid="stSidebar"] {
-            background: linear-gradient(180deg, #f1e3d2 0%, #ead7c1 100%);
-            border-right: 1px solid rgba(113, 85, 63, 0.12);
+            background: linear-gradient(180deg, #0b2230 0%, #103a40 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
         }
         section[data-testid="stSidebar"] * {
-            color: #3a2c23 !important;
+            color: #e7f6f3 !important;
         }
-        .clinic-card {
-            padding: 18px 18px 8px 18px;
-            border-radius: 24px;
-            background: rgba(255, 250, 244, 0.92);
-            border: 1px solid var(--card-border);
-            box-shadow: var(--shadow);
-            margin-bottom: 16px;
+        section[data-testid="stSidebar"] div[data-baseweb="select"] > div,
+        section[data-testid="stSidebar"] input {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+            color: #ffffff !important;
+        }
+        section[data-testid="stSidebar"] div[data-baseweb="tag"] {
+            background: rgba(14, 154, 138, 0.45) !important;
+        }
+        section[data-testid="stSidebar"] hr {
+            border-color: rgba(255, 255, 255, 0.10);
         }
         div[data-testid="stMetric"] {
-            background: rgba(255, 250, 244, 0.94);
+            background: var(--surface);
             border-radius: 18px;
-            padding: 14px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 10px 22px rgba(81, 51, 34, 0.06);
+            padding: 16px 18px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        div[data-testid="stMetric"] label {
+            color: var(--muted) !important;
+            font-weight: 700 !important;
+        }
+        div[data-testid="stMetricValue"] {
+            color: var(--ink) !important;
+            font-weight: 800 !important;
+        }
+        .panel-card {
+            padding: 20px 20px 12px 20px;
+            border-radius: 22px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 18px;
+        }
+        .panel-card h3, .panel-card .stSubheader {
+            margin-top: 0;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+        .section-sub {
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
         }
         .result-badge {
-            display: inline-block;
-            margin-bottom: 12px;
-            padding: 8px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding: 9px 16px;
             border-radius: 999px;
-            color: #fff8f2;
+            color: #ffffff;
             font-weight: 800;
-            font-size: 0.88rem;
+            font-size: 0.92rem;
+            box-shadow: 0 10px 22px rgba(11, 34, 48, 0.16);
         }
         .result-summary {
-            padding: 16px;
-            border-radius: 20px;
-            background: #fffaf5;
-            border: 1px solid var(--card-border);
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #f7fbfa 0%, #f0f7f6 100%);
+            border: 1px solid var(--border);
             margin-bottom: 16px;
         }
+        .confidence-bar-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(16, 42, 47, 0.08);
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .confidence-bar-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
         .soft-note {
-            padding: 12px 14px;
+            padding: 13px 15px;
             border-radius: 14px;
-            background: rgba(62, 93, 72, 0.07);
-            border: 1px solid rgba(62, 93, 72, 0.14);
-            color: #344e3d;
-            font-size: 0.94rem;
+            background: var(--primary-soft);
+            border: 1px solid rgba(14, 154, 138, 0.22);
+            color: #0a4a41;
+            font-size: 0.92rem;
         }
-        h1, h2, h3, p, label, li, span {
-            color: var(--ink);
+        .ai-note {
+            margin: 4px 0 16px 0;
+            padding: 13px 15px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(47, 111, 237, 0.22);
+            border-radius: 14px;
+            color: #14305f;
+            font-size: 0.92rem;
         }
+        .empty-state {
+            padding: 26px;
+            border-radius: 16px;
+            text-align: center;
+            color: var(--muted);
+            background: rgba(16, 42, 47, 0.03);
+            border: 1px dashed var(--border);
+        }
+        h1, h2, h3, p, label, li, span { color: var(--ink); }
         .stTabs [data-baseweb="tab-list"] {
-            gap: 10px;
+            gap: 8px;
             padding-bottom: 6px;
         }
         .stTabs [data-baseweb="tab"] {
-            background: rgba(255, 250, 244, 0.88) !important;
-            border: 1px solid var(--card-border);
+            background: var(--surface) !important;
+            border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 10px 16px;
+            padding: 10px 18px;
         }
         .stTabs [data-baseweb="tab"] p {
-            color: #4a3a2f !important;
-            font-weight: 800 !important;
+            color: #436461 !important;
+            font-weight: 700 !important;
         }
         .stTabs [aria-selected="true"] {
-            background: rgba(185, 86, 56, 0.14) !important;
-            border: 1px solid rgba(185, 86, 56, 0.28) !important;
+            background: var(--primary-soft) !important;
+            border: 1px solid rgba(14, 154, 138, 0.35) !important;
         }
         .stTabs [aria-selected="true"] p {
-            color: #8c3f26 !important;
+            color: var(--primary-dark) !important;
         }
         .stTextInput input,
         .stNumberInput input,
         .stTextArea textarea,
         div[data-baseweb="select"] > div {
-            background: #fffdf9 !important;
-            color: #342920 !important;
-            border: 1px solid rgba(113, 85, 63, 0.28) !important;
-            border-radius: 14px !important;
+            background: #fdfffe !important;
+            color: var(--ink) !important;
+            border: 1px solid rgba(16, 42, 47, 0.18) !important;
+            border-radius: 12px !important;
+        }
+        .stTextInput input:focus, .stNumberInput input:focus, .stTextArea textarea:focus {
+            border: 1px solid var(--primary) !important;
+            box-shadow: 0 0 0 3px var(--primary-soft) !important;
+        }
+        .stSlider [data-baseweb="slider"] [role="slider"] {
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+        }
+        div[data-testid="stSliderTrackColor"], .stSlider [data-testid="stTickBar"] + div > div {
+            background: var(--primary) !important;
         }
         .stButton > button,
         .stForm button,
         div[data-testid="stFormSubmitButton"] button {
-            background: var(--accent) !important;
-            color: #fff9f4 !important;
-            border: 1px solid var(--accent) !important;
+            background: linear-gradient(120deg, var(--primary), var(--primary-dark)) !important;
+            color: #ffffff !important;
+            border: none !important;
             border-radius: 14px !important;
-            min-height: 46px !important;
+            min-height: 48px !important;
             font-weight: 800 !important;
-            box-shadow: 0 14px 26px rgba(185, 86, 56, 0.16);
+            box-shadow: 0 14px 28px rgba(14, 154, 138, 0.24);
+            transition: transform 0.12s ease, box-shadow 0.12s ease;
         }
         .stButton > button:hover,
         .stForm button:hover,
         div[data-testid="stFormSubmitButton"] button:hover {
-            background: var(--accent-dark) !important;
-            border-color: var(--accent-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 16px 32px rgba(14, 154, 138, 0.30);
         }
         div[data-testid="stDataFrame"] {
-            border-radius: 18px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
         }
         details[data-testid="stExpander"] {
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--border);
             border-radius: 16px;
-            background: rgba(255, 250, 244, 0.85);
+            background: var(--surface);
         }
         details[data-testid="stExpander"] summary {
-            color: #6a2f1d !important;
+            color: var(--primary-dark) !important;
             font-weight: 800 !important;
         }
         .legend-line {
-            margin-top: 10px;
-            color: var(--muted);
-            font-size: 0.92rem;
+            margin-top: 14px;
+            color: #cfe9e3;
+            font-size: 0.86rem;
+        }
+        .legend-line strong { color: #ffffff; }
+        .factor-chip {
+            display: inline-block;
+            margin: 3px 6px 3px 0;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: var(--primary-soft);
+            border: 1px solid rgba(14, 154, 138, 0.22);
+            color: #0a4a41;
+            font-size: 0.84rem;
+            font-weight: 600;
+        }
+        .rec-item {
+            padding: 10px 12px;
+            margin-bottom: 6px;
+            border-radius: 12px;
+            background: rgba(16, 42, 47, 0.03);
+            border-left: 3px solid var(--primary);
+            font-size: 0.9rem;
         }
         </style>
         """,
@@ -405,37 +563,46 @@ def install_styles() -> None:
 
 
 def render_hero(api_ok: bool, api_info: dict, total_students: int) -> None:
-    status_class = "status-ok" if api_ok else "status-warn"
+    status_class = "ok" if api_ok else "fail"
     status_text = (
-        "API активен: контейнерная версия отвечает и готова к прогнозу."
+        "AI API онлайн — нейросеть подключена и готова к прогнозу"
         if api_ok
-        else "API недоступен: интерфейс временно использует локальный расчёт без контейнера."
+        else "AI API недоступен — используется локальный расчёт без контейнера"
     )
+    model_role = api_info.get("model_role", "weighted_profile_assessor")
+    model_label = "Нейросеть + методика" if model_role == "supporting_classifier" else "Только методика"
+
     st.markdown(
         f"""
         <div class="hero-panel">
           <div class="hero-grid">
             <div>
-              <div class="hero-eyebrow">DevOps • Docker Personal • Applied Domain</div>
-              <h1>Определение будущей врачебной специализации студента мединститута</h1>
+              <div class="hero-eyebrow">⚕ DevOps • Docker Personal • Прикладная область: Лечение</div>
+              <h1>Прогноз будущей врачебной специализации студента мединститута</h1>
               <p>
-                Отдельный проект на основе исходного шаблона. В этой версии интерфейс собран
-                как клинический портал: тёплая палитра, карточная навигация и акцент на объяснимый прогноз.
+                Сервис сочетает прозрачную экспертную методику оценки профиля студента
+                с обученной нейросетью-классификатором, чтобы предложить наиболее вероятную
+                специализацию вместе с объяснением и рекомендациями для развития.
               </p>
+              <div class="hero-pills">
+                <span class="hero-pill">🔪 Хирург</span>
+                <span class="hero-pill">❤️ Кардиолог</span>
+                <span class="hero-pill">🧠 Невролог</span>
+                <span class="hero-pill">👂 Отоларинголог</span>
+              </div>
               <div class="legend-line">
-                Прикладная область: <strong>Лечение</strong> • Входных полей: <strong>{INPUT_FIELD_COUNT}</strong> •
-                Демонстрационных записей: <strong>{total_students}</strong>
+                Входных полей: <strong>{INPUT_FIELD_COUNT}</strong> &nbsp;•&nbsp;
+                Профилей в реестре: <strong>{total_students}</strong> &nbsp;•&nbsp;
+                Режим модели: <strong>{model_label}</strong>
               </div>
             </div>
             <div class="hero-side">
-              <div class="{status_class}">{status_text}</div>
-              <div class="side-note">
-                <strong>Поддерживаемые специализации:</strong><br>
-                Хирург, кардиолог, невролог, отоларинголог.
+              <div class="status-chip {status_class}">
+                <span class="dot {status_class}"></span>{status_text}
               </div>
-              <div class="side-note">
-                <strong>Docker edition:</strong> Docker Personal<br>
-                <strong>API model role:</strong> {api_info.get('model_role', 'weighted_profile_assessor')}
+              <div class="hero-note">
+                <strong>API model role:</strong> {model_role}<br>
+                <strong>Docker edition:</strong> Docker Personal
               </div>
             </div>
           </div>
@@ -447,20 +614,28 @@ def render_hero(api_ok: bool, api_info: dict, total_students: int) -> None:
 
 def render_prediction(result: dict | None) -> None:
     if not result:
-        st.info("После расчёта здесь появятся специализация, вероятности и объяснение прогноза.")
+        st.markdown(
+            '<div class="empty-state">После расчёта здесь появятся специализация, '
+            "вероятности и объяснение прогноза.</div>",
+            unsafe_allow_html=True,
+        )
         return
 
     specialty_key = result.get("predicted_specialty_key", "")
-    color = SPECIALTY_COLORS.get(specialty_key, "#7a4b38")
+    color = SPECIALTY_COLORS.get(specialty_key, "#0e9a8a")
+    icon = SPECIALTY_ICONS.get(specialty_key, "🩺")
     confidence = float(result.get("confidence", 0.0))
 
     st.markdown(
         f"""
         <div class="result-summary" style="border-left: 6px solid {color};">
-          <span class="result-badge" style="background:{color};">{result.get('predicted_specialty', '-')}</span>
+          <span class="result-badge" style="background:{color};">{icon} {result.get('predicted_specialty', '-')}</span>
           <h3 style="margin: 0 0 8px 0;">Итоговый прогноз</h3>
-          <p style="margin: 0 0 10px 0;">{result.get('summary', '-')}</p>
-          <div class="soft-note">Уверенность прогноза: <strong>{confidence:.0%}</strong></div>
+          <p style="margin: 0;">{result.get('summary', '-')}</p>
+          <div class="confidence-bar-track">
+            <div class="confidence-bar-fill" style="width:{confidence*100:.0f}%;"></div>
+          </div>
+          <div class="soft-note" style="margin-top:10px;">Уверенность прогноза: <strong>{confidence:.0%}</strong></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -469,15 +644,18 @@ def render_prediction(result: dict | None) -> None:
     metric_col1, metric_col2, metric_col3 = st.columns(3)
     metric_col1.metric("Уверенность", f"{confidence:.0%}")
     metric_col2.metric("Входных полей", result.get("input_count", INPUT_FIELD_COUNT))
-    metric_col3.metric("Источник", result.get("model_role", "weighted_profile_assessor"))
+    role = result.get("model_role", "weighted_profile_assessor")
+    metric_col3.metric("Роль модели", "NN + методика" if role == "supporting_classifier" else "Методика")
 
-    st.write("**Ключевые факторы**")
-    for item in result.get("key_factors", []):
-        st.markdown(f"- {item}")
+    st.markdown("**Ключевые факторы**")
+    st.markdown(
+        "".join(f'<span class="factor-chip">{item}</span>' for item in result.get("key_factors", [])),
+        unsafe_allow_html=True,
+    )
 
-    st.write("**Рекомендации**")
+    st.markdown("**Рекомендации по развитию**")
     for item in result.get("recommendations", []):
-        st.markdown(f"- {item}")
+        st.markdown(f'<div class="rec-item">💡 {item}</div>', unsafe_allow_html=True)
 
     with st.expander("Вероятности по специализациям", expanded=True):
         st.dataframe(
@@ -486,7 +664,7 @@ def render_prediction(result: dict | None) -> None:
             hide_index=True,
             column_config={
                 "Специализация": st.column_config.TextColumn(width="large"),
-                "Вероятность": st.column_config.NumberColumn(format="%.2f"),
+                "Вероятность": st.column_config.ProgressColumn(format="%.2f", min_value=0, max_value=1),
             },
         )
 
@@ -498,14 +676,55 @@ def render_prediction(result: dict | None) -> None:
             column_config={
                 "Специализация": st.column_config.TextColumn(width="large"),
                 "Интегральный балл": st.column_config.NumberColumn(format="%.2f"),
-                "Вероятность": st.column_config.NumberColumn(format="%.2f"),
+                "Вероятность": st.column_config.ProgressColumn(format="%.2f", min_value=0, max_value=1),
             },
         )
+
+    heuristic_probs = result.get("heuristic_probabilities")
+    model_probs = result.get("model_probabilities")
+    if heuristic_probs and model_probs:
+        with st.expander("Вклад ИИ: методика vs нейросеть", expanded=False):
+            st.markdown(
+                """
+                <div class="ai-note">
+                    Итоговый прогноз объединяет два сигнала: прозрачную взвешенную методику
+                    (35%) и обученную нейросеть-классификатор (65%). Так результат остаётся
+                    объяснимым, но опирается на модель, обученную на датасете профилей.
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            ai_col1, ai_col2 = st.columns(2, gap="medium")
+            with ai_col1:
+                st.caption("Методика (эвристика)")
+                st.dataframe(
+                    probability_frame(heuristic_probs),
+                    use_container_width=True,
+                    hide_index=True,
+                    height=180,
+                    column_config={
+                        "Специализация": st.column_config.TextColumn(width="large"),
+                        "Вероятность": st.column_config.ProgressColumn(format="%.2f", min_value=0, max_value=1),
+                    },
+                )
+            with ai_col2:
+                st.caption("Нейросеть")
+                st.dataframe(
+                    probability_frame(model_probs),
+                    use_container_width=True,
+                    hide_index=True,
+                    height=180,
+                    column_config={
+                        "Специализация": st.column_config.TextColumn(width="large"),
+                        "Вероятность": st.column_config.ProgressColumn(format="%.2f", min_value=0, max_value=1),
+                    },
+                )
+            st.caption(f"Источник модели: `{result.get('model_source', '-')}` • usable: {result.get('model_usable', False)}")
 
 
 def build_payload() -> dict | None:
     with st.form("student_specialty_form", clear_on_submit=False):
-        st.markdown("### Учебный профиль")
+        st.markdown('<div class="section-title">🎓 Учебный профиль</div>', unsafe_allow_html=True)
         c1, c2, c3 = st.columns(3)
         student_name = c1.text_input("ФИО студента", "Екатерина Новикова")
         course_year = c2.selectbox("Курс", [1, 2, 3, 4, 5, 6], index=4)
@@ -515,14 +734,14 @@ def build_payload() -> dict | None:
         anatomy_score = c4.number_input("Оценка по анатомии", min_value=0, max_value=100, value=90)
         physiology_score = c5.number_input("Оценка по физиологии", min_value=0, max_value=100, value=86)
 
-        st.markdown("### Интерес к специализациям")
+        st.markdown('<div class="section-title">🧭 Интерес к специализациям</div>', unsafe_allow_html=True)
         i1, i2, i3, i4 = st.columns(4)
-        surgery_interest = i1.slider("Хирургия", 0, 10, 8)
-        cardiology_interest = i2.slider("Кардиология", 0, 10, 6)
-        neurology_interest = i3.slider("Неврология", 0, 10, 5)
-        ent_interest = i4.slider("Отоларингология", 0, 10, 4)
+        surgery_interest = i1.slider("🔪 Хирургия", 0, 10, 8)
+        cardiology_interest = i2.slider("❤️ Кардиология", 0, 10, 6)
+        neurology_interest = i3.slider("🧠 Неврология", 0, 10, 5)
+        ent_interest = i4.slider("👂 Отоларингология", 0, 10, 4)
 
-        st.markdown("### Клинические и личностные навыки")
+        st.markdown('<div class="section-title">🩺 Клинические и личностные навыки</div>', unsafe_allow_html=True)
         s1, s2, s3 = st.columns(3)
         manual_dexterity = s1.slider("Мануальная точность", 0, 10, 8)
         stress_tolerance = s2.slider("Стрессоустойчивость", 0, 10, 8)
@@ -542,10 +761,10 @@ def build_payload() -> dict | None:
         student_note = st.text_area(
             "Краткая заметка к профилю",
             "Студент активно проявляет себя на клинической практике.",
-            height=100,
+            height=90,
         )
 
-        submitted = st.form_submit_button("Рассчитать вероятную специализацию", use_container_width=True)
+        submitted = st.form_submit_button("✨ Рассчитать вероятную специализацию", use_container_width=True)
         if not submitted:
             return None
 
@@ -576,7 +795,7 @@ def build_payload() -> dict | None:
 def main() -> None:
     st.set_page_config(
         page_title="Medical Specialization Dashboard",
-        page_icon="MD",
+        page_icon="⚕️",
         layout="wide",
     )
     install_styles()
@@ -588,17 +807,22 @@ def main() -> None:
     if "last_prediction" not in st.session_state and students:
         st.session_state["last_prediction"] = students[-1]
 
-    st.sidebar.title("Фильтры и статус")
-    st.sidebar.caption("Отдельная копия проекта на той же архитектурной базе.")
-    st.sidebar.write(f"API URL: `{API_URL}`")
-    st.sidebar.write(f"Статус API: {'online' if api_ok else 'offline'}")
-    st.sidebar.write(f"Входных полей: `{INPUT_FIELD_COUNT}`")
+    with st.sidebar:
+        st.markdown("### ⚕️ Статус сервиса")
+        st.caption("Прогноз специализации на базе методики + нейросети.")
+        st.write(f"API URL: `{API_URL}`")
+        st.write(f"Статус API: {'🟢 online' if api_ok else '🔴 offline'}")
+        st.write(f"Модель загружена: {'да' if api_info.get('model_loaded') else 'нет'}")
+        st.write(f"Источник модели: `{api_info.get('model_source', '-')}`")
+        st.write(f"Входных полей: `{INPUT_FIELD_COUNT}`")
 
-    specialty_options = sorted([value for value in frame["predicted_specialty"].dropna().unique()]) if not frame.empty else []
-    year_options = sorted([int(value) for value in frame["course_year"].dropna().unique()]) if not frame.empty else []
+        st.divider()
+        st.markdown("### 🔍 Фильтры реестра")
+        specialty_options = sorted([value for value in frame["predicted_specialty"].dropna().unique()]) if not frame.empty else []
+        year_options = sorted([int(value) for value in frame["course_year"].dropna().unique()]) if not frame.empty else []
 
-    filter_specialties = st.sidebar.multiselect("Специализация", specialty_options)
-    filter_years = st.sidebar.multiselect("Курс", year_options)
+        filter_specialties = st.multiselect("Специализация", specialty_options)
+        filter_years = st.multiselect("Курс", year_options)
 
     render_hero(api_ok, api_info, len(students))
 
@@ -617,45 +841,20 @@ def main() -> None:
         len(set(frame["predicted_specialty"].dropna())) if not frame.empty else 0,
     )
 
-    tab_registry, tab_new, tab_analytics = st.tabs(["Реестр студентов", "Новый прогноз", "Аналитика"])
-
-    with tab_registry:
-        st.markdown('<div class="clinic-card">', unsafe_allow_html=True)
-        st.subheader("Локальный реестр профилей")
-
-        filtered = frame.copy()
-        if filter_specialties:
-            filtered = filtered[filtered["predicted_specialty"].isin(filter_specialties)]
-        if filter_years:
-            filtered = filtered[filtered["course_year"].isin(filter_years)]
-
-        registry = registry_frame(filtered)
-        if registry.empty:
-            st.warning("По текущим фильтрам записи не найдены.")
-        else:
-            st.dataframe(
-                registry,
-                use_container_width=True,
-                hide_index=True,
-                column_config={
-                    "Студент": st.column_config.TextColumn(width="large"),
-                    "Прогноз": st.column_config.TextColumn(width="medium"),
-                    "Уверенность": st.column_config.NumberColumn(format="%.2f"),
-                },
-            )
-        st.markdown("</div>", unsafe_allow_html=True)
+    tab_new, tab_registry, tab_analytics = st.tabs(["🧬 Новый прогноз", "🗂️ Реестр студентов", "📊 Аналитика"])
 
     with tab_new:
         form_col, result_col = st.columns([1.3, 0.92], gap="large")
 
         with form_col:
-            st.markdown('<div class="clinic-card">', unsafe_allow_html=True)
+            st.markdown('<div class="panel-card">', unsafe_allow_html=True)
             st.subheader("Профиль студента")
             st.caption("Форма содержит 19 параметров и соответствует требованию задания по количеству входных данных.")
 
             payload = build_payload()
             if payload is not None:
-                result, source = predict_student(payload)
+                with st.spinner("Рассчитываем прогноз..."):
+                    result, source = predict_student(payload)
                 normalized_profile = result.get("normalized_profile", payload)
                 record = {
                     "id": f"MED-{uuid4().hex[:6].upper()}",
@@ -668,22 +867,50 @@ def main() -> None:
                 save_students(students)
                 st.session_state["last_prediction"] = record
                 if source == "api":
+                    st.toast("Прогноз рассчитан через контейнеризированный FastAPI-сервис.", icon="✅")
                     st.success("Прогноз рассчитан через контейнеризированный FastAPI-сервис.")
                 else:
+                    st.toast("API недоступен — использован локальный расчёт.", icon="⚠️")
                     st.warning("API недоступен, поэтому использован локальный расчёт внутри dashboard.")
             st.markdown("</div>", unsafe_allow_html=True)
 
         with result_col:
-            st.markdown('<div class="clinic-card">', unsafe_allow_html=True)
+            st.markdown('<div class="panel-card">', unsafe_allow_html=True)
             st.subheader("Последний результат")
             render_prediction(st.session_state.get("last_prediction"))
             st.markdown("</div>", unsafe_allow_html=True)
+
+    with tab_registry:
+        st.markdown('<div class="panel-card">', unsafe_allow_html=True)
+        st.subheader("Локальный реестр профилей")
+
+        filtered = frame.copy()
+        if filter_specialties:
+            filtered = filtered[filtered["predicted_specialty"].isin(filter_specialties)]
+        if filter_years:
+            filtered = filtered[filtered["course_year"].isin(filter_years)]
+
+        registry = registry_frame(filtered)
+        if registry.empty:
+            st.markdown('<div class="empty-state">По текущим фильтрам записи не найдены.</div>', unsafe_allow_html=True)
+        else:
+            st.dataframe(
+                registry,
+                use_container_width=True,
+                hide_index=True,
+                column_config={
+                    "Студент": st.column_config.TextColumn(width="large"),
+                    "Прогноз": st.column_config.TextColumn(width="medium"),
+                    "Уверенность": st.column_config.ProgressColumn(format="%.2f", min_value=0, max_value=1),
+                },
+            )
+        st.markdown("</div>", unsafe_allow_html=True)
 
     with tab_analytics:
         left, right = st.columns(2, gap="large")
 
         with left:
-            st.markdown('<div class="clinic-card">', unsafe_allow_html=True)
+            st.markdown('<div class="panel-card">', unsafe_allow_html=True)
             st.subheader("Распределение по специализациям")
             if not frame.empty:
                 specialty_counts = (
@@ -693,13 +920,13 @@ def main() -> None:
                     .reset_index(name="Количество")
                     .set_index("Специализация")
                 )
-                st.bar_chart(specialty_counts, use_container_width=True)
+                st.bar_chart(specialty_counts, use_container_width=True, color="#0e9a8a")
             else:
-                st.info("Недостаточно данных для графика.")
+                st.markdown('<div class="empty-state">Недостаточно данных для графика.</div>', unsafe_allow_html=True)
             st.markdown("</div>", unsafe_allow_html=True)
 
         with right:
-            st.markdown('<div class="clinic-card">', unsafe_allow_html=True)
+            st.markdown('<div class="panel-card">', unsafe_allow_html=True)
             st.subheader("Средняя уверенность по курсам")
             if not frame.empty:
                 confidence_by_year = (
@@ -709,12 +936,12 @@ def main() -> None:
                     .rename("Уверенность")
                     .to_frame()
                 )
-                st.line_chart(confidence_by_year, use_container_width=True)
+                st.line_chart(confidence_by_year, use_container_width=True, color="#2f6fed")
             else:
-                st.info("Недостаточно данных для графика.")
+                st.markdown('<div class="empty-state">Недостаточно данных для графика.</div>', unsafe_allow_html=True)
             st.markdown("</div>", unsafe_allow_html=True)
 
-        st.markdown('<div class="clinic-card">', unsafe_allow_html=True)
+        st.markdown('<div class="panel-card">', unsafe_allow_html=True)
         st.subheader("Сводка по последнему прогнозу")
         last_prediction = st.session_state.get("last_prediction")
         if last_prediction:
@@ -731,13 +958,13 @@ def main() -> None:
                     use_container_width=True,
                     hide_index=True,
                     column_config={
-                        "Вероятность": st.column_config.NumberColumn(format="%.2f"),
+                        "Вероятность": st.column_config.ProgressColumn(format="%.2f", min_value=0, max_value=1),
                     },
                 )
             else:
-                st.info("Ранжирование появится после первого расчёта.")
+                st.markdown('<div class="empty-state">Ранжирование появится после первого расчёта.</div>', unsafe_allow_html=True)
         else:
-            st.info("Сначала выполните хотя бы один расчёт в соседней вкладке.")
+            st.markdown('<div class="empty-state">Сначала выполните хотя бы один расчёт в соседней вкладке.</div>', unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
 

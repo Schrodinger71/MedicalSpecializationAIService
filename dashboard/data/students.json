@@ -2108,5 +2108,137 @@
       "Поддерживать высокий уровень анатомической подготовки."
     ],
     "prediction_source": "api"
+  },
+  {
+    "id": "MED-6B5A2B",
+    "created_at": "2026-06-20T08:51:46",
+    "student_name": "Екатерина Олеговна",
+    "course_year": 4,
+    "student_note": "Студент активно проявляет себя на клинической практике.",
+    "academic_score": 85.0,
+    "anatomy_score": 90.0,
+    "physiology_score": 86.0,
+    "surgery_interest": 8.0,
+    "cardiology_interest": 6.0,
+    "neurology_interest": 5.0,
+    "ent_interest": 4.0,
+    "manual_dexterity": 8.0,
+    "stress_tolerance": 8.0,
+    "empathy": 7.0,
+    "analytical_thinking": 8.0,
+    "communication_skill": 7.0,
+    "research_orientation": 6.0,
+    "night_shift_readiness": 7.0,
+    "cardiovascular_endurance": 7.0,
+    "auditory_attention": 5.0,
+    "precision_focus": 8.0,
+    "predicted_specialty_key": "surgery",
+    "predicted_specialty": "Хирург",
+    "confidence": 0.7710999846458435,
+    "score_breakdown": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "score": 7.8854,
+        "probability": 0.7710999846458435
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "score": 7.332,
+        "probability": 0.08009999990463257
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "score": 7.1305,
+        "probability": 0.08160000294446945
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "score": 6.8492,
+        "probability": 0.06719999760389328
+      }
+    ],
+    "probabilities": {
+      "Хирург": 0.7710999846458435,
+      "Кардиолог": 0.08009999990463257,
+      "Невролог": 0.08160000294446945,
+      "Отоларинголог": 0.06719999760389328
+    },
+    "heuristic_probabilities": {
+      "Хирург": 0.39100000262260437,
+      "Кардиолог": 0.20090000331401825,
+      "Невролог": 0.21899999678134918,
+      "Отоларинголог": 0.1889999955892563
+    },
+    "model_probabilities": {
+      "Хирург": 0.9757000207901001,
+      "Кардиолог": 0.014999999664723873,
+      "Невролог": 0.007600000128149986,
+      "Отоларинголог": 0.0017000000225380063
+    },
+    "combined_probabilities": {
+      "Хирург": 0.7710999846458435,
+      "Кардиолог": 0.08009999990463257,
+      "Невролог": 0.08160000294446945,
+      "Отоларинголог": 0.06719999760389328
+    },
+    "top_specialties": [
+      {
+        "specialty_key": "surgery",
+        "specialty_name": "Хирург",
+        "probability": 0.7710999846458435
+      },
+      {
+        "specialty_key": "neurology",
+        "specialty_name": "Невролог",
+        "probability": 0.08160000294446945
+      },
+      {
+        "specialty_key": "cardiology",
+        "specialty_name": "Кардиолог",
+        "probability": 0.08009999990463257
+      },
+      {
+        "specialty_key": "otolaryngology",
+        "specialty_name": "Отоларинголог",
+        "probability": 0.06719999760389328
+      }
+    ],
+    "key_factors": [
+      "Анатомия: 90/100",
+      "Интерес к хирургии: 8.0/10",
+      "Мануальная точность: 8.0/10",
+      "Стрессоустойчивость: 8.0/10",
+      "Концентрация на деталях: 8.0/10"
+    ],
+    "summary": "Профиль студента Екатерина Олеговна ближе всего к специализации «Хирург». Уверенность модели составляет 77%. Решающими оказались сочетание профильных интересов, базовых дисциплин и клинических навыков.",
+    "recommendations": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "input_count": 19,
+    "domain": "Лечение",
+    "trace_id": "trace-1b1ce9b356",
+    "model_loaded": true,
+    "model_usable": true,
+    "model_source": "/app/models/model.h5",
+    "model_diagnostic": "ok",
+    "model_role": "supporting_classifier",
+    "available_specialties": [
+      "Хирург",
+      "Кардиолог",
+      "Невролог",
+      "Отоларинголог"
+    ],
+    "recommendation_pool": [
+      "Усилить практику в операционном блоке и на симуляторах.",
+      "Добавить больше кейсов на работу в стрессовых и ночных сменах.",
+      "Поддерживать высокий уровень анатомической подготовки."
+    ],
+    "prediction_source": "api"
   }
 ]
