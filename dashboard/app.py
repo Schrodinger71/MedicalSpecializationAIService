@@ -275,7 +275,20 @@ def install_styles() -> None:
             font-size: 2.25rem;
             line-height: 1.12;
             font-weight: 800;
-            color: #ffffff;
+        }
+        .hero-panel h1,
+        .hero-panel h1 a,
+        .hero-panel h1 a:link,
+        .hero-panel h1 a:visited,
+        .hero-panel h1 * {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            cursor: default !important;
+        }
+        .hero-panel h1 [data-testid="stHeaderActionElements"],
+        .hero-panel h1 .anchor-link,
+        .hero-panel h1 svg {
+            display: none !important;
         }
         .hero-panel p {
             margin: 0;
